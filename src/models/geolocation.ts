@@ -4,3 +4,10 @@ export interface Coordinates {
   right: number;
   top: number;
 }
+
+export interface ValidationState {
+  top: boolean;
+  left: boolean;
+  right: boolean;
+  bottom: boolean;
+}

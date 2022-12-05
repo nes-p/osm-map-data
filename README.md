@@ -50,3 +50,11 @@ TODO:
 - add lintr to css: stylelint (config, package.json script, install the lib)
 - adjust eslint (airbnb)
 - check if craco is needed for webpack
+  -validate input
+- errors, if too big area
+  -useMemo, useCallback to optimize
+  -the code quality,
+- proper mocking
+- data validation
+  -unite testing
+- approach to the problem

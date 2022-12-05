@@ -12,7 +12,9 @@ const apiClient = {
         // },
       }
     );
-    return await response.text();
+    // return await response.text();
+    return response;
+
     //   .then(({ text }) => {
     //     console.log(text);
 

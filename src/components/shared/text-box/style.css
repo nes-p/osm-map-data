@@ -1,0 +1,14 @@
+.text-box {
+  margin-bottom: 10px;
+}
+.text-label {
+  margin-right: 5px;
+}
+.text-input {
+  margin-left: 5px;
+  padding: 2px;
+  min-width: 200px;
+}
+.error {
+  color: brown;
+}

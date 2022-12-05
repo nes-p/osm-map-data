@@ -10,8 +10,8 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import featureCollection from './mocks/featureCollection.json';
-import GeoMap from './components/GeoMap';
-import GeoContainer from './components/GeoContainer';
+import GeoMap from './components/geo-map/GeoMap';
+import GeoContainer from './components/geo-container/GeoContainer';
 const defaultCenter = [40.7709, -73.9734];
 const defaultZoom = 16;
 
@@ -32,16 +32,10 @@ function App() {
           Learn React
         </a>
       </header> */}
-      {/* <MapContainer zoom={defaultZoom}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
+      <header className="geo-header">
+        <h3 className="h1-header"> Geo Box</h3>
+      </header>
 
-        {data && <GeoJSON data={data} />}
-        {<GeoJSON data={JSON.parse(JSON.stringify(featureCollection.features))} />}
-      </MapContainer> */}
-      {/* <GeoMap /> */}
       <GeoContainer />
     </div>
   );
