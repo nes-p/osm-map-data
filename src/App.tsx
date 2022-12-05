@@ -1,19 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import apiClient from './services/api/api-client';
-import coordinates from './mocks/coordinates.json';
-import { loadData, parseXmlData } from './services/geoServices';
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
-import { FeatureCollection, Geometry, GeoJsonProperties } from 'geojson';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-
-import featureCollection from './mocks/featureCollection.json';
-import GeoMap from './components/geo-map/GeoMap';
+import React from 'react';
 import GeoContainer from './components/geo-container/GeoContainer';
-const defaultCenter = [40.7709, -73.9734];
-const defaultZoom = 16;
+
+import './App.css';
 
 function App() {
   return (
@@ -35,7 +23,6 @@ function App() {
       <header className="geo-header">
         <h3 className="h1-header"> Geo Box</h3>
       </header>
-
       <GeoContainer />
     </div>
   );

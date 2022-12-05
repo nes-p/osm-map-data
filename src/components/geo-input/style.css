@@ -15,6 +15,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
-.error {
+.error-text-box,
+.error-geo-input {
   color: brown;
 }

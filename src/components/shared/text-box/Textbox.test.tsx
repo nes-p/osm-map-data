@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import TextBox from './TextBox';
 
 describe('TextBox', () => {
@@ -15,7 +15,9 @@ describe('TextBox', () => {
   it('should call callback', () => {
     render(<TextBox onChange={callMock}>{TEST_NAME}</TextBox>);
     const input = screen.getByLabelText(TEST_NAME);
-    fireEvent.change(input, { target: { value: '123' } });
+    act(() => {
+      fireEvent.change(input, { target: { value: '123' } });
+    });
     expect(callMock).toBeCalledTimes(1);
   });
 

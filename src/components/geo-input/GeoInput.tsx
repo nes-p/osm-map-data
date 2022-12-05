@@ -53,7 +53,7 @@ const GeoInput: FC = () => {
             {'bottom'}
           </TextBox>
         </fieldset>
-        {error && <div className="error">{error}</div>}
+        {error && <div className="error-geo-input">{error}</div>}
         <Button onClick={loadGeoData}>{'Show on map'}</Button>
       </div>
     </>

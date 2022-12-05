@@ -14,7 +14,10 @@ export async function loadData(coordinates: Coordinates) {
   const result = await apiClient.getOsmMapData(coordinates);
   if (!result.ok) throw await result.text();
   const xml = await result.text();
+  console.log(xml);
   const parsed = parseXmlData(xml);
+  console.log('======================');
+  console.log(parsed);
   const geoJSON = convertOSM(parsed);
   return geoJSON;
 }

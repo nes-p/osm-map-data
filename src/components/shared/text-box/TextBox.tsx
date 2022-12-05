@@ -29,7 +29,11 @@ const TextBox: FC<TextBoxProps> = ({
         className="text-input"
       />
     </label>
-    {!isValid && <div className="error">{error}</div>}
+    {!isValid && (
+      <div className="error" data-testid="error-text-box">
+        {error}
+      </div>
+    )}
   </div>
 );
 

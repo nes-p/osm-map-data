@@ -58,3 +58,7 @@ TODO:
 - data validation
   -unite testing
 - approach to the problem
+  "@types/leaflet": "^1.9.0",
+  "@types/react-leaflet": "^2.8.2", check if it shoud be in devDep
+
+  rewrite form with submit

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import Button from './Button';
 
 describe('Button', () => {
@@ -15,7 +15,9 @@ describe('Button', () => {
   it('should call callback', () => {
     render(<Button onClick={callMock}>{TEST_NAME}</Button>);
     const button = screen.getByText(TEST_NAME);
-    fireEvent.click(button);
+    act(() => {
+      fireEvent.click(button);
+    });
     expect(callMock).toHaveBeenCalled();
   });
 });
