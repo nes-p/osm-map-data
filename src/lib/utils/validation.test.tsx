@@ -1,4 +1,4 @@
-import { coordinatesValidation, validateGeoInput } from './helpers';
+import { coordinatesValidation, validateGeoInput } from './validation';
 
 describe('helpers', () => {
   it('validateGeoInput should return true', () => {

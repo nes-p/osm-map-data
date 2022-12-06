@@ -8,10 +8,8 @@ const callApiMock = jest.fn();
 const callInputMock = jest.fn();
 const CONTEXT_DATA: CoordinatesContextProps = {
   coordinates: coordinates.Berlin,
-  // TODO: check this
   handleCoordinateChange: callInputMock,
   loadGeoData: callApiMock,
-  //TODO: check this
   geoData: undefined,
   validationState: {
     top: true,
@@ -38,7 +36,6 @@ describe('GeoInput', () => {
   it('should display top label', () => {
     render(<GeoInput />);
     const top = screen.getByText(/top/i);
-    screen.debug(top);
     expect(top).toBeInTheDocument();
   });
   it('should display bottom label', () => {

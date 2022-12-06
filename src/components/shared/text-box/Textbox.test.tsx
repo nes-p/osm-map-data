@@ -27,6 +27,7 @@ describe('TextBox', () => {
     const text = screen.getByPlaceholderText(/TEST_PLACEHOLDER/i);
     expect(text).toBeInTheDocument();
   });
+
   it('should display value', () => {
     const TEST_INPUT = 123;
     render(
@@ -38,6 +39,7 @@ describe('TextBox', () => {
 
     expect(input).toHaveDisplayValue('123');
   });
+
   it('should display error', () => {
     const TEST_ERROR_TEXT = 'TEST_ERROR_TEXT';
     render(

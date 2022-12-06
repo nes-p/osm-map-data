@@ -30,7 +30,7 @@ const TextBox: FC<TextBoxProps> = ({
       />
     </label>
     {!isValid && (
-      <div className="error" data-testid="error-text-box">
+      <div className="error-text-box" data-testid="error-text-box">
         {error}
       </div>
     )}

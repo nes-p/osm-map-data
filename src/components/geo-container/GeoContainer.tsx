@@ -1,10 +1,10 @@
-import React, { createContext, FC, useState } from 'react';
+import React, { createContext, FC, useCallback, useState } from 'react';
 import { Coordinates, ValidationState } from '../../models/geolocation';
 import GeoInput from '../geo-input/GeoInput';
 import GeoMap from '../geo-map/GeoMap';
 import { FeatureCollection, Geometry, GeoJsonProperties } from 'geojson';
 import { loadData } from '../../services/geoServices';
-import { coordinatesValidation, validateGeoInput } from '../helpers';
+import { coordinatesValidation, validateGeoInput } from '../../lib/utils/validation';
 
 export interface CoordinatesContextProps {
   coordinates: Coordinates;
@@ -14,12 +14,12 @@ export interface CoordinatesContextProps {
     }: React.ChangeEvent<HTMLInputElement>,
     key: string
   ) => void;
+
   loadGeoData: () => void;
   geoData?: FeatureCollection<Geometry, GeoJsonProperties>;
   validationState: ValidationState;
   loading: boolean;
-  // ToDO check this
-  error: string | null;
+  error?: string | null;
 }
 
 export const CoordinatesContext = createContext<CoordinatesContextProps>({
@@ -29,10 +29,8 @@ export const CoordinatesContext = createContext<CoordinatesContextProps>({
     right: 0,
     bottom: 0,
   },
-  // TODO: check this
   handleCoordinateChange: () => null,
   loadGeoData: () => null,
-  //TODO: check this
   geoData: undefined,
   validationState: {
     top: true,
@@ -72,21 +70,7 @@ export const GeoContainer: FC = () => {
         ...prev,
         [key]: value,
       }));
-    console.log('coordinates', coordinates);
   };
-
-  // const checkValidationState2 = () => {
-  //   let coord: keyof typeof coordinates;
-  //   for (coord in coordinates) {
-  //     const isValid = coordinatesValidation(`${coordinates[coord]}`);
-  //     setValidationState((prev) => ({
-  //       ...prev,
-  //       [coord]: isValid,
-  //     }));
-  //     console.log('validationState', validationState);
-  //   }
-  //   console.log('validationState', validationState);
-  // };
 
   const validateState = () => {
     const newState = {
@@ -100,7 +84,7 @@ export const GeoContainer: FC = () => {
     return formIsValid;
   };
 
-  const loadGeoData = () => {
+  const loadGeoData = useCallback(() => {
     const isCoordsValid = validateState();
     if (isCoordsValid) {
       setLoading(true);
@@ -109,7 +93,7 @@ export const GeoContainer: FC = () => {
         .catch((e) => setError(e))
         .finally(() => setLoading(false));
     }
-  };
+  }, [coordinates.bottom, coordinates.left, coordinates.right, coordinates.top]);
 
   return (
     <>

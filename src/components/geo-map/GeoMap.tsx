@@ -1,16 +1,12 @@
 import React, { FC, useContext, useEffect } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
-import { Geometry, Feature } from 'geojson';
+import { Geometry, Feature, GeoJsonProperties } from 'geojson';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-
-import featureCollection from '../../mocks/featureCollection.json';
-
 import { CoordinatesContext } from '../geo-container/GeoContainer';
+import GeoJsonWithUpdates from '../geo-json-with-updates/GeoJsonWithUpdates';
+import { defaultMapZoom } from '../../lib/constants';
 import './style.css';
-import GeoJsonWithUpdates from '../GeoJsonWithUpdates';
-
-const defaultZoom = 2;
 
 const GeoMap: FC = () => {
   const { coordinates, geoData } = useContext(CoordinatesContext);
@@ -22,10 +18,7 @@ const GeoMap: FC = () => {
     });
   }, []);
 
-  // console.log('test', JSON.parse(JSON.stringify(featureCollection)));
-
-  // TODO: any
-  const featureHandler = (feature: Feature<Geometry, any>, layer: L.Layer) => {
+  const featureHandler = (feature: Feature<Geometry, GeoJsonProperties>, layer: L.Layer) => {
     layer.bindPopup(
       `box coords: ${coordinates.left},
         ${coordinates.bottom},
@@ -39,22 +32,12 @@ const GeoMap: FC = () => {
 
   return (
     <div className="map-outer-container">
-      <MapContainer className="map" zoom={defaultZoom} center={center}>
-        <>
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          />
-          {/* <GeoJSON data={JSON.parse(JSON.stringify(featureCollection.features))} /> */}
-          {/* {console.log('geoData', geoData)}
-          {console.log('center', center)} */}
-          {geoData && (
-            <>
-              {/* <GeoJSON data={geoData} onEachFeature={featureHandler} ref={geoJsonLayerRef} /> */}
-              <GeoJsonWithUpdates data={geoData} onEachFeature={featureHandler} />
-            </>
-          )}
-        </>
+      <MapContainer className="map" zoom={defaultMapZoom} center={center}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        {geoData && <GeoJsonWithUpdates data={geoData} onEachFeature={featureHandler} />}
       </MapContainer>
     </div>
   );

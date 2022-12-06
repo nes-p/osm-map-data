@@ -10,7 +10,7 @@ export default function GeoJsonWithUpdates(props: GeoJSONProps): ReactElement {
     if (layer) {
       layer.clearLayers().addData(props.data);
     }
-  }, [props.data, props.pathOptions, props.style]);
+  }, [props.data]);
 
   return <GeoJSON {...props} ref={geoJsonLayerRef} />;
 }

@@ -1,11 +1,10 @@
 import React, { FC, useContext } from 'react';
-
 import Button from '../shared/button/Button';
 import { CoordinatesContext } from '../geo-container/GeoContainer';
+import TextBox from '../shared/text-box/TextBox';
+import { ERROR_TEXT } from '../../lib/constants';
 import './style.css';
 
-import TextBox from '../shared/text-box/TextBox';
-import { ERROR_TEXT } from '../constants';
 const GeoInput: FC = () => {
   const { coordinates, handleCoordinateChange, loadGeoData, validationState, error } =
     useContext(CoordinatesContext);

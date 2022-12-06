@@ -44,21 +44,3 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-TODO:
-
-- add lintr to css: stylelint (config, package.json script, install the lib)
-- adjust eslint (airbnb)
-- check if craco is needed for webpack
-  -validate input
-- errors, if too big area
-  -useMemo, useCallback to optimize
-  -the code quality,
-- proper mocking
-- data validation
-  -unite testing
-- approach to the problem
-  "@types/leaflet": "^1.9.0",
-  "@types/react-leaflet": "^2.8.2", check if it shoud be in devDep
-
-  rewrite form with submit
