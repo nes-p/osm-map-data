@@ -9,7 +9,8 @@ import { defaultMapZoom } from '../../lib/constants';
 import './style.css';
 
 const GeoMap: FC = () => {
-  const { coordinates, geoData } = useContext(CoordinatesContext);
+  const { coordinates, geoData, error } = useContext(CoordinatesContext);
+  const isDataValid = geoData && !error;
   useEffect(() => {
     L.Icon.Default.mergeOptions({
       iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
@@ -37,7 +38,7 @@ const GeoMap: FC = () => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
-        {geoData && <GeoJsonWithUpdates data={geoData} onEachFeature={featureHandler} />}
+        {isDataValid && <GeoJsonWithUpdates data={geoData} onEachFeature={featureHandler} />}
       </MapContainer>
     </div>
   );
